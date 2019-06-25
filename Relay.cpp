@@ -1,19 +1,19 @@
 #include "Arduino.h"
 #include "Relay.h"
 
-Relay::Relay(int pin,uint8_t normallyOpen) {
+Relay::Relay(int pin) {
   pinMode(pin,OUTPUT);
   _pin=pin;
-  _normallyOpen=normallyOpen;
 }
 void Relay::open() {
-  digitalWrite(_pin,!_normallyOpen);
+  digitalWrite(_pin,LOW);
 }
 void Relay::close() {
-  digitalWrite(_pin,_normallyOpen);
+  digitalWrite(_pin,HIGH);
 }
 void Relay::closeMillis(int millis) {
   close();
   delay(millis);
   open();
 }
+
